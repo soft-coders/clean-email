@@ -1,24 +1,26 @@
-<h2> 
-  Uploaded Email Lists
-</h2>
+<% if @email_lists.any?%>
+  <h2> 
+    Uploaded Email Lists
+  </h2>
 
-<table class="table mt-5">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">List Name</th>
-      <th class="text-center" scope="col">Number of Record </th>
-      <th class="text-center" scope="col">Verification Status</th>
-      <th class="text-center" scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @email_lists.each do |list| %>
+  <table class="table mt-5">
+    <thead class="thead-light">
       <tr>
-        <th scope="row"> <%= list.name %> </th>
-        <td class="text-center"> <%= list.emails.count %> </td>
-        <td class="text-center"> <%= list.verified ? "Verified" : "Not Verified" %> </td>
-        <td class="text-center"> <%= link_to("Show", list) %> </td>
+        <th scope="col">List Name</th>
+        <th class="text-center" scope="col">Number of Record </th>
+        <th class="text-center" scope="col">Verification Status</th>
+        <th class="text-center" scope="col">Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @email_lists.each do |list| %>
+        <tr>
+          <th scope="row"> <%= list.name %> </th>
+          <td class="text-center"> <%= list.emails.count %> </td>
+          <td class="text-center"> <%= list.verified ? "Verified" : "Not Verified" %> </td>
+          <td class="text-center"> <%= link_to("Show", list) %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
