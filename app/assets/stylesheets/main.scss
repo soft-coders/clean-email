@@ -86,3 +86,14 @@ main {
 .pagination span {
   padding: 0 10px;
 }
+
+.ce-logout {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.ce-logout:hover {
+  color: gray;
+  text-decoration: none;
+}

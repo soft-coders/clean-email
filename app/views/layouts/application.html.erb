@@ -18,7 +18,11 @@
         <div class="col no-left-padding">
             <nav class="navbar no-left-padding navbar-light">
               <a class="navbar-brand">Meta</a>
-              <a> LOGOUT </a>
+              <% if user_signed_in? %>
+                <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "ce-logout") %>
+              <% else %>
+                <%= link_to('Login', new_user_session_path, class: "ce-logout") %>
+              <% end %>
             </nav>
           </div>
         </div>
