@@ -1,0 +1,31 @@
+<h2 class="text-center"> 
+  <span class="font-italic"> <%= @email_list.name %> </span>
+  <% if @email_list.verified? %>
+    is presented below
+  <% else %>
+    is being analyzed, will be ready in a while. Please come back later.
+  <% end %>  
+</h2>
+<% if @email_list.verified? %>
+  <table class="table mt-5">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Email</th>
+        <th class="text-center" scope="col">Valid Format </th>
+        <th class="text-center" scope="col">Valid Domain Name</th>
+        <th class="text-center" scope="col">Valid MX Record</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @emails.each do |email| %>
+        <tr>
+          <th scope="row"> <%= email.address %> </th>
+          <td class="text-center"> <%= email.format_validity ? "Yes" : "NO" %> </td>
+          <td class="text-center"> <%= email.domain_validity ? "Yes" : "NO" %> </td>
+          <td class="text-center"> <%= email.mx_record_validity ? "Yes" : "NO" %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @emails %>
+<% end %>

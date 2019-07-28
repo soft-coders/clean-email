@@ -1,0 +1,13 @@
+<h2 class="text-center"> Upload CSV file to analyze </h2>
+<div>
+<%= form_for @email_list, url: email_lists_path do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Name of the List" %>
+      <%= f.text_field :name, class: "form-control", placeholder: 'Skip to let us infer from file name' %>
+    </div>
+   <div class="form-group">
+      <%= f.file_field :csv_file, class: 'form-control-file', required: true %>
+   </div>
+   <%= f.submit "Upload", class: "btn btn-primary" %>
+<% end %>
+</div>

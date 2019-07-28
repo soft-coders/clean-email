@@ -1,0 +1,88 @@
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #fff;
+  color: #2c3d4f;
+}
+.menu {
+  // background: #5bc995;
+  background: #2c3d4f;
+  outline: none;
+  padding-top: 90px;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0.5em 0;
+  margin: 0;
+}
+.menu ul li {
+  padding: 0.5em 1em 0.5em 3em;
+  font-size: 0.95em;
+  font-weight: regular;
+  background-repeat: no-repeat;
+  background-position: left 15px center;
+  background-size: auto 20px;
+  transition: all 0.15s linear;
+  cursor: pointer;
+}
+
+.menu ul li span a{
+  color: white;
+}
+
+.menu ul li span a:hover{
+  text-decoration: none;
+}
+.menu ul li.icon-dashboard {
+  background-image: url("http://www.entypo.com/images//gauge.svg");
+}
+.menu ul li.icon-customers {
+  background-image: url("http://www.entypo.com/images//briefcase.svg");
+}
+.menu ul li.icon-users {
+  background-image: url("http://www.entypo.com/images//users.svg");
+}
+.menu ul li.icon-settings {
+  background-image: url("http://www.entypo.com/images//tools.svg");
+}
+.menu ul li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.menu ul li:focus {
+  outline: none;
+}
+
+main {
+  background: #fff;
+}
+
+.no-left-padding {
+  padding-left: 0px;
+}
+
+.top-navbar-container {
+  background: #2c3d4f;
+  color: rgb(255, 255, 255);
+}
+.top-navbar {
+background: rgba(0, 0, 0, 0.1);
+}
+
+main {
+  margin-top: 30px;
+}
+
+.pagination {
+  padding: 30px 0;
+  width: 400px;
+  margin: 0 auto;
+  display: block !important;
+}
+
+.pagination span {
+  padding: 0 10px;
+}

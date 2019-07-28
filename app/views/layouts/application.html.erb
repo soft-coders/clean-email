@@ -7,9 +7,48 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+    <div class="top-navbar-container">
+      <div class="top-navbar container-fluid">
+        <div class="row">
+        <div class="col-2"></div>
+        <div class="col no-left-padding">
+            <nav class="navbar no-left-padding navbar-light">
+              <a class="navbar-brand">Meta</a>
+              <a> LOGOUT </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 no-left-padding">
+          <nav class="menu" tabindex="0">            
+            <ul>
+              <li class="icon-dashboard"><span><%= link_to("Email Lists", email_lists_path) %></span></li>
+              <li class="icon-customers"><span><%= link_to("Upload CSV", new_email_list_url) %></span></li>
+              <li class="icon-settings"><span><%= link_to("Settings", root_path) %></span></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col">
+
+          <main>
+
+            <%= yield %>
+          </main>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  
   </body>
 </html>
