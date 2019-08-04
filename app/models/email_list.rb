@@ -1,7 +1,7 @@
 class EmailList < ApplicationRecord
-  require 'csv'
 
-  validates :name, presence: true
+  validates :name, :email_column, presence: true
 
   has_many :emails, dependent: :destroy
+  has_one_attached :email_csv
 end

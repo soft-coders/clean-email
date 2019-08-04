@@ -17,6 +17,9 @@ class EmailVerificationService
         mx_record_validity: mx_record_exists?(host),
         domain_validity: ns_record_exists?(host),
       }
+
+      update_params.merge!(is_valid: update_params.values.uniq.exclude?(false))
+      
       email.update_columns(update_params)
     end
     @email_list.update_columns(verified: true)

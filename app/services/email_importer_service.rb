@@ -1,20 +1,21 @@
 class EmailImporterService
   require 'csv'
 
-  def self.call(email_list: nil, csv_file: nil)
-    new(email_list, csv_file).call
+  def self.call(email_list: nil)
+    new(email_list).call
   end
 
   def call
-    CSV.foreach(@csv_file.path, headers: true) do |row|
-      Email.new(email_list: @email_list, address: row[0]).save
+    email_column = @email_list.email_column
+    csv_path = ActiveStorage::Blob.service.send(:path_for, @email_list.email_csv.key)
+    CSV.foreach(csv_path, headers: true) do |row|
+      Email.create(email_list: @email_list, address: row[email_column])
     end
   end
 
   private
 
-  def initialize(email_list, csv_file)
+  def initialize(email_list)
     @email_list = email_list
-    @csv_file = csv_file
   end
 end

@@ -14,15 +14,10 @@ class EmailListsController < ApplicationController
   end
 
   def create
-    file = email_list_params[:csv_file]
-    list_name = email_list_params[:name].present? ? email_list_params[:name] : file.original_filename
-    
-    email_list = EmailList.new(name: list_name, user_id: current_user.id)
+    email_list = EmailList.new(email_list_params.merge(user_id: current_user.id))
 
     if email_list.save!
-      if file.present?
-        EmailImporterService.call(email_list: email_list, csv_file: file)
-      end
+      EmailImporterService.call(email_list: email_list)
       VefifyEmailJob.perform_later(email_list.id)
       redirect_to email_list, notice: "Emails list was imported sucessfully"
     else
@@ -43,6 +38,6 @@ class EmailListsController < ApplicationController
   private
 
   def email_list_params
-    params.require(:email_list).permit(:name, :csv_file)
+    params.require(:email_list).permit(:name, :email_column, :email_csv)
   end
 end
