@@ -7,22 +7,19 @@
   <% end %>  
 </h2>
 <% if @email_list.verified? %>
+<%= link_to('Download Filtered CSV', rails_blob_path(@email_list.filtered_email_csv, disposition: "attachment"), class: 'btn btn-primary')%>
   <table class="table mt-5">
     <thead class="thead-light">
       <tr>
         <th scope="col">Email</th>
-        <th class="text-center" scope="col">Valid Format </th>
-        <th class="text-center" scope="col">Valid Domain Name</th>
-        <th class="text-center" scope="col">Valid MX Record</th>
+        <th class="text-center" scope="col">Valid </th>
       </tr>
     </thead>
     <tbody>
       <% @emails.each do |email| %>
         <tr>
           <th scope="row"> <%= email.address %> </th>
-          <td class="text-center"> <%= email.format_validity ? "Yes" : "NO" %> </td>
-          <td class="text-center"> <%= email.domain_validity ? "Yes" : "NO" %> </td>
-          <td class="text-center"> <%= email.mx_record_validity ? "Yes" : "NO" %> </td>
+          <td class="text-center"> <%= email.is_valid ? "Yes" : "NO" %> </td>
         </tr>
       <% end %>
     </tbody>
